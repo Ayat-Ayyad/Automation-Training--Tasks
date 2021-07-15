@@ -25,6 +25,7 @@ var assert = require('assert');
 
 
     
+
     it('Second item in the cart', function(){
         var cart = ["Orange", "Banana", "Apple", "Strawberry"];
         var second = cart[1];
