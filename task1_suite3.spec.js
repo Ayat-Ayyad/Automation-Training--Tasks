@@ -13,9 +13,6 @@ describe('Test Suite 3', () => {
     it('Test Case 2:Multiple checkbox demo ', () => {
         cy.get('#check1').click();
         
-        cy.get(':nth-child(3) > label > .cb1-element').should('be.checked');
-        cy.get(':nth-child(4) > label > .cb1-element').should('be.checked');
-        cy.get(':nth-child(5) > label > .cb1-element').should('be.checked');
-        cy.get(':nth-child(6) > label > .cb1-element').should('be.checked')
+        cy.get('.cb1-element').should('be.checked')
     });
 });
