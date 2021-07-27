@@ -37,12 +37,14 @@ describe('Cypress Task 2: Test Suite 3', () => {
         cy.get('.ng-binding').should('contain', 'Item 2');
 
 //Mark an item as completed
-        cy.get(':nth-child(1) > .view > .toggle').check();
+        cy.contains('li','Item 1').find('.toggle').click();
         //Assertions
-        cy.get(':nth-child(1) > .view > .toggle').should('be.checked');
+        cy.contains('li','Item 1').find('.toggle').should('be.checked');
 
 //Filters the list by "Completed"
-        cy.get('ul.filters > :nth-child(3)').click();
+        cy.get('[href="#/completed"]').click()
+
+        // or cy.get('ul.filters > :nth-child(3)').click();
 //Checks that only the completed item is displayed
     cy.get('.ng-binding').should('contain', 'Item 1').should('exist');
     cy.get('.ng-binding').should('not.contain', 'Item 2')
