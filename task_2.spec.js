@@ -1,20 +1,17 @@
 import data from '../fixtures/data.json';
-import 'cypress-file-upload';
 
 describe('Cypress Task 2: Test Suite 1', () => {
     it('Test Case 1: Fill the form using the data stored in data.json file.', () => {
         cy.visit('https://demoqa.com/text-box');
-        cy.fixture('data.json').then((data) => {})
         cy.get('#userName').type(data.FullName);
         cy.get('#userEmail').type(data.Email);
         cy.get('#currentAddress').type(data.CurrentAddress);
         cy.get('#permanentAddress').type(data.PermanentAddress);
         cy.get('#submit').click();
-
-        cy.get('#name').should('contain', 'Name:Ayat Ayyad');
-        cy.get('#email').should('contain', 'Email:ayat.ayyad@axsos.me');
-        cy.get('p#currentAddress').should('contain', 'Current Address :Ramallah');
-        cy.get('p#permanentAddress').should('contain', 'Permananet Address :Al-Bireh')
+        cy.get('#name').should('contain', data.FullName);
+        cy.get('#email').should('contain', data.Email);
+        cy.get('p#currentAddress').should('contain', data.CurrentAddress);
+        cy.get('p#permanentAddress').should('contain', data.PermanentAddress)
     });
 });
 
@@ -33,7 +30,6 @@ describe('Cypress Task 2: Test Suite 3', () => {
     });
     it('Add, check, filter, check displayed', () => {
 //Add two items to the todo list
-        cy.fixture('data.json').then((data) => {})
         cy.get('.new-todo').type(data.todo1).type('{enter}');
         cy.get('.new-todo').type(data.todo2).type('{enter}');
         //Assertions
